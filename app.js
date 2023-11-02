@@ -1,16 +1,29 @@
 
-class Color {
-    constructor(r,g,b){
-        this.r = r;
-        this.g = g;
-        this.b = b;
-    }
+class Pet {
+   constructor(name,age){
+    this.age = age;
+    this.name = name
+   }
 
-     hex(params) {
-        
-        return `${this.r}`
+   eat(){
+    return `${this.name} is eating`
+   }
+}
+
+class Cat extends Pet{
+
+    meow(){
+        return `MEOW!!!`
+    }
+}
+class Dog extends Pet {
+    woff(){
+        return `WOFF!!!`
     }
 }
 
-const c1 = new Color('255','213','33')
-console.log(c1.hex())
+const doora = new Cat('doora',3)
+const tiger = new Dog('tiger',12)
+console.log(doora.eat())
+console.log(tiger.eat())
+
