@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text"  id="inp" placeholder="type here" >
+    <button id="btn">click here</button>
+
+    <script>
+
+        const input = document.getElementById('inp')
+        const btn = document.getElementById('btn')
+
+        btn.addEventListener('click',()=>{
+            clickedfn()
+        })
+        
+        
+        
+        const clickedDebounce = (debfn,limit)=>{
+            let t;
+            return function(){
+                if(t) clearTimeout(t);
+                
+                t = setTimeout(() => {
+                    debfn()
+                }, limit);
+            }
+        }
+
+        const debounce = ()=>{
+            console.log('triggered')
+        }
+        
+        const clickedfn = clickedDebounce(debounce,400)
+
+
+        input.addEventListener('input',()=>{
+            fn();
+        })
+        const controlfn = (cb,d)=>{
+
+            let timer;
+
+            return function(){
+                if(timer) clearTimeout(timer)
+
+                timer = setTimeout(() => {
+                    cb()
+                }, d);
+            }
+        }
+
+        const fn = controlfn(debounce,800);
+    </script>
+</body>
+</html>
